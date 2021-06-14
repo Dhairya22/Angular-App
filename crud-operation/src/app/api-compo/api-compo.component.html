@@ -1,0 +1,64 @@
+<!-- <p>{{data2 | json}}</p> -->
+<!-- <div style="display: flex; justify-content: center;">
+<form class="example-form" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Filter</mat-label>
+      <input #item1 matInput type="text" placeholder="Ex. dhairya" [(ngModel)]="title" [(ngModel)]="title" value="" (input)="Search()">
+    </mat-form-field>
+</form>
+</div> -->
+
+<div class="container">
+
+  <div style="display: flex; justify-content: center;">
+<mat-form-field style="width: 75%;">
+  <mat-label>Filter</mat-label>
+  <input matInput placeholder="Ex. ium" type="text" #input value="" (input)="Search(input.value)">
+</mat-form-field>
+</div>
+
+<div style="display: flex; justify-content: center;">
+
+<table #MatTable mat-table [dataSource]="data2" class="mat-elevation-z8" style="width: 75%;">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="userId">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef> completed </th>
+    <td mat-cell *matCellDef="let element"> {{element.completed}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let i=index; let element">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deletedata(i)">delete</mat-icon>
+    </td>
+  </ng-container>
+  
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+</table>
+</div>
+</div>

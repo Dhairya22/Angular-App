@@ -1,0 +1,36 @@
+<div class="container">
+  <!-- <div>
+    <input type="text" #data>
+    <button (click)='add(data)'>click to add</button>
+    <p *ngFor="let d of i">{{d}}</p>
+  </div> -->
+
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Click</mat-label>
+      <input matInput #data>
+    </mat-form-field>
+    <button mat-mini-fab color="accent" (click)='add(data)' aria-label="Example icon button with a plus one icon">
+      <mat-icon>plus_one</mat-icon>
+    </button>
+    <p *ngFor="let d of i">[ {{d}} ]</p>
+  </div>
+  <div class="row" style="margin-top: 25px;">
+
+    <div>
+      <pre><h1>Array</h1><p>Og Array : [ {{arrrr}} ]</p>
+                <p>After filtering : {{fil}}</p>
+                <p>After Mapping : {{mapp}}</p>
+                <p>After Reducing : {{reddd}}</p>
+            <p>Summation of positive values : {{ress}}</p></pre>
+    </div>
+
+    <div>
+      <pre><h1>Object</h1><p>Og Array of Object : {{arr|json}}</p>
+                <p>Salary : {{obj|json}}</p>
+                <p>Objj : {{objj|json}}</p>
+
+            </pre>
+    </div>
+  </div>
+</div>
