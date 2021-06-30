@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-array-obj',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./array-obj.component.css']
 })
 export class ArrayObjComponent implements OnInit {
+
+  @ViewChild('btn') button : ElementRef;
 
   arr : Array<any> = [
     {
@@ -76,6 +79,16 @@ export class ArrayObjComponent implements OnInit {
   add(data){
     this.res = this.i.push(data.value);
     console.log(this.i);
+  }
+
+  ngAfterViewInit(): void {
+    this.onClick();    
+  }
+
+  onClick(){
+    let buttonSubs = fromEvent(this.button.nativeElement,'click').subscribe(res => {
+      console.log("res : ",res);      
+    })
   }
 
 }

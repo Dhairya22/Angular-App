@@ -20,6 +20,8 @@ export class AppComponent implements OnInit{
   empArr : any;
   
   constructor(private aRoute: ActivatedRoute){
+
+    console.log("App Component Loader");
     // this.aRoute.data.subscribe((data:any) => {
     //   data.records.appCompoData.subscribe((appCompoData) => {
     //     console.log("App compo data : ",appCompoData);
@@ -46,6 +48,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
+
+    console.log("App Component Loader 2");
     // this.dataForm =  new FormGroup({
     //   name: new FormControl('',Validators.required),
     //   number: new FormControl('',Validators.required),

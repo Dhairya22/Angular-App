@@ -32,24 +32,23 @@ export class CommonService {
   }
 
   getTheData(){
-    return this.obj;
-    
+    return this.obj;    
   }
 
   getdata(){
-    let url = "https://jsonplaceholder.typicode.com/todos";
-    return this.http.get(url);
+    let urll = "https://jsonplaceholder.typicode.com/todos";
+    return this.http.get(urll);
   }
 
-  url = "https://jsonplaceholder.typicode.com/posts/1/comments";
+  urll = "https://jsonplaceholder.typicode.com/posts/1/comments";
 
   getUsersData(): Observable<any> {
-    return this.http.get(this.url);
+    return this.http.get(this.urll);
   }
 
   // getUsersData(): Promise<any> {
   //   return new Promise((resolve) => {
-  //     resolve(this.http.get(this.url));
+  //     resolve(this.http.get(this.urll));
   //   })
   // }
 
@@ -110,4 +109,20 @@ export class CommonService {
   //     },3000)
   //   })
   // }
+
+  url =  'https://retoolapi.dev/Wc0aVl/data';
+  getFakeData(){
+    return this.http.get(this.url);
+  }
+  postFakeData(data){
+    return this.http.post(this.url, data)
+  }
+  deleteFakeData(id){
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+
+  getEmailData(){
+    return this.http.get('https://retoolapi.dev/lrWhgk/data');
+  }
 }

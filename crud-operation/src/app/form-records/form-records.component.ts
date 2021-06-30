@@ -70,7 +70,15 @@ export class FormRecordsComponent implements OnInit {
       age: i.age,
       city2: i.city
     });
+
+    this.MatTable.renderRows()
     // console.log("name : ",this.name);
+  }
+
+  ngChange(){
+    this.dataForm.patchValue({
+      name: this.dataForm.value.city,
+    })
   }
 
   deletedata(i: number) {

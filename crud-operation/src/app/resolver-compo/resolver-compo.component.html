@@ -3,18 +3,34 @@
     <h1>Static data</h1>
   </div>
   <!-- <div style="display: flex; justify-content: space-around;"> -->
-    <div *ngFor="let items of cars">
-      <pre>
+  <div *ngFor="let items of cars">
+    <pre>
         Carname :  {{items.carname | json}}
         Model : {{items.model | json}}
         Company : {{items.company | json}}
         Color : {{items.color | json}}
         <!-- {{items | json}} -->
       </pre>
-    </div>
+  </div>
   <!-- </div> -->
   <br><br><br>
   <hr>
+  <h1 class="text-center">Form</h1>
+  <div style="display:flex; justify-content: space-around;">
+    <form [formGroup]="formGroup">
+    <mat-form-field appearance="fill" style="width: 35%;">
+      <input matInput (ngModelChange)="ngChange()" formControlName="name" placeholder="Simple placeholder" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 35%;">
+      <input matInput formControlName="email" placeholder="Simple placeholder" required>
+    </mat-form-field>
+  </form>
+  </div>
+  <div style="display:flex; justify-content: center;">
+    <button mat-raised-button color="primary">Primary</button>
+  </div>
+  <br><br><br><br>
   <div class="text-center">
     <h1>API data</h1>
   </div>
@@ -52,6 +68,7 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let i=index; let element">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="editRecord(tableData)">edit</mat-icon>
           <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteRecord(i)">delete</mat-icon>
         </td>
       </ng-container>
@@ -67,6 +84,8 @@
   <div class="text-center">
     <h1>Github Data</h1>
   </div>
+
+
   <div style="display:flex; justify-content: center;">
 
     <table #matTable mat-table [dataSource]="empArr" class="mat-elevation-z8" style="width: 100%;">

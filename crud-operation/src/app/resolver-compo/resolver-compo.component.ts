@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, customMethod, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { car } from '../data';
 import { HttpClient } from '@angular/common/http'
 import { ResolverService } from '../resolver-service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-resolver-compo',
   templateUrl: './resolver-compo.component.html',
   styleUrls: ['./resolver-compo.component.css']
 })
-export class ResolverCompoComponent implements OnInit {
+export class ResolverCompoComponent implements OnInit, customMethod {
 
   @ViewChild('matTable') matTable;
   @ViewChild('tableData') tableData;
@@ -23,8 +24,10 @@ export class ResolverCompoComponent implements OnInit {
   empArr = []; //for api data
   data : any; //direct api call
   itemsss: any;
+
+  formGroup! : FormGroup;
   
-  constructor(private aRoute: ActivatedRoute, private http: HttpClient, private reso: ResolverService) {
+  constructor(private aRoute: ActivatedRoute, private http: HttpClient) {
     
     console.log("ResolverComponent Loaded");
 
@@ -70,13 +73,13 @@ export class ResolverCompoComponent implements OnInit {
       });
     })
 
-    aRoute.data.subscribe(data => {
-      data.dataRecords.items.subscribe((items:any) => {
-        this.itemsss = items;
-        console.log("itemssss : ",items);
+    // aRoute.data.subscribe(data => {
+    //   data.dataRecords.items.subscribe((items:any) => {
+    //     this.itemsss = items;
+    //     console.log("itemssss : ",items);
         
-      })
-    })
+    //   })
+    // })
     //github Api data
   //   aRoute.data.subscribe(data => {
   //     this.empArr = data.dataRecords;
@@ -84,8 +87,20 @@ export class ResolverCompoComponent implements OnInit {
   // })
 
   }
+  ngcustomMethod(): void {
+    console.log("this is custom method");
+  }
+
+  name: string;
+  email: string
   
   ngOnInit(): void {
+
+    console.log("this is ngoninit method");
+    this.formGroup = new FormGroup({
+      name: new FormControl('',Validators.required),
+      email: new FormControl('',Validators.required)
+    })
 
     console.log("emp array : ",this.empArr);
     
@@ -93,6 +108,22 @@ export class ResolverCompoComponent implements OnInit {
     // console.log("Cars Data : ",this.cars);
     // this.datas = this.route.snapshot.data['dataRecords'];
     // console.log("Data : ",this.datas);
+  }
+
+  ngChange(){
+    this.formGroup.patchValue({
+      email: this.formGroup.value.name
+    })
+  }
+
+  editRecord(data: any){
+    console.log("data : ",data);
+
+    this.formGroup.patchValue({
+      name: data.name,
+      email: data.email
+    })
+    
   }
 
   deleteRecord(i : number){

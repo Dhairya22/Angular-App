@@ -10,18 +10,15 @@ import { PromiseCompoComponent } from "./promise-compo/promise-compo.component";
 import { ResolverCompoComponent } from './resolver-compo/resolver-compo.component';
 import { ResolverService } from './resolver-service';
 import { ArrayObjComponent } from './array-obj/array-obj.component';
+import { JquerydemoComponent } from './jquerydemo/jquerydemo.component';
+import { AppInitComponent } from './app-init/app-init.component';
+import { ValidatorsComponent } from './validators/validators.component';
+import { ExcelDataComponent } from './excel-data/excel-data.component';
 
 const routes: Routes = [
   {
     path: '',
     component:FormRecordsComponent
-  },
-  {
-    path: 'home',
-    component: AppComponent,
-    resolve : {
-      records : ResolverService
-    }
   },
   {
     path: 'formrecords',
@@ -54,10 +51,28 @@ const routes: Routes = [
     path: "arrobj",
     component: ArrayObjComponent
   },
-  // {
-  //   path: "formdialog",
-  //   component: FormDialogComponent
-  // },
+  {
+    path: "jquery",
+    component: JquerydemoComponent,
+    resolve: {
+      jqueryDemoData: ResolverService
+    }
+  },
+  {
+    path: "appinit",
+    component: AppInitComponent
+  },
+  {
+    path: "validators",
+    component: ValidatorsComponent
+  },
+  {
+    path: "excel",
+    component: ExcelDataComponent,
+    resolve: {
+      excelData: ResolverService
+    }
+  },
   {
     path: "**",
     component: NotFounfComponent

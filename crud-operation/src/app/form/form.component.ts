@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from "src/app/common.service";
 
 @Component({
@@ -9,14 +10,16 @@ import { CommonService } from "src/app/common.service";
 })
 export class FormComponent implements OnInit {
 
+  name = "Child Compo";
+
   dataSource = [];
 
   dataForm!: FormGroup;
 
-  records: any;
+  static records: Array<any> = [];
 
   message = "hello";
-  constructor(private ser : CommonService) {
+  constructor(private ser : CommonService, private router: Router) {
     // console.log("Dataform : ",this.dataForm.value);
     // this.ser.getTheData();
     // console.log("FormComponent Loaded\n");
@@ -32,14 +35,16 @@ export class FormComponent implements OnInit {
     });
   }
 
-  submitData(data){
-    data = this.dataForm;
-    console.log("Form details : ",data.value)
+  details;
+  submitData(){
+    console.log("Form details : ",this.dataForm.value)
 
-    this.records = data;
+    this.details = this.dataForm.value;
     // console.log("records : ",this.records);
-    
-    this.ser.setTheData(this.records);
+    FormComponent.records = this.dataForm.value;
+
+    // this.router.navigate(["/records"])
+    // this.ser.setTheData(this.dataForm.value);
     // console.log("FormComponent Loaded\n");
 
     // console.log(
