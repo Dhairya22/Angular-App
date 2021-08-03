@@ -22,7 +22,8 @@
   </div> -->
 
   <div>
-    <mat-form-field class="example-full-width">
+    <form [formGroup]="formGroup">
+    <mat-form-field class="example-full-width" formControlName="formCon">
       <mat-label>Click</mat-label>
       <input matInput #data>
     </mat-form-field>
@@ -30,6 +31,7 @@
       <mat-icon>plus_one</mat-icon>
     </button>
     <p *ngFor="let d of i">[ {{d}} ]</p>
+  </form>
   </div>
   <div class="row" style="margin-top: 25px;">
 
@@ -40,7 +42,7 @@
                 <p>After Reducing : {{reddd}}</p>
             <p>Summation of positive values : {{ress}}</p>
 
-            <button #btn class="btn btn-primary" (click)="onClick()">Click</button>
+            <!-- <button #btn class="btn btn-primary" (click)="onClick()">Click</button>
             <div class="row">
             <div class="col-lg-3">
               <ul>
@@ -52,7 +54,12 @@
                 <li>shelar</li>
               </ul>
             </div>
-            </div></pre>
+            </div> -->
+          </pre>
+          <div>
+            <button>click</button> <br><br>            
+            <button (click)="click2()">click 2</button>
+          </div>
     </div>
 
     <div class="col-lg-6">
@@ -63,4 +70,5 @@
             </pre>
     </div>
   </div>
+
 </div>

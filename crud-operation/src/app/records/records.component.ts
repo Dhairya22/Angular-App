@@ -37,8 +37,8 @@ export class RecordsComponent implements OnInit {
   ngOnInit(): void {
     this.message = this.ser.getTheData();
     console.log("Message : ",this.message);
-    console.log("form data : ", FormComponent.records);
-    this.dataSource.push(FormComponent.records);
+    // console.log("form data : ", FormComponent.records);
+    // this.dataSource.push(FormComponent.records);
     console.log(">>>> : ", this.dataSource)
     // this.dataSource = FormComponent.records;
   }

@@ -125,4 +125,12 @@ export class CommonService {
   getEmailData(){
     return this.http.get('https://retoolapi.dev/lrWhgk/data');
   }
+
+  getForkData1(){
+    return this.http.get('https://jsonplaceholder.typicode.com/users')
+  }
+  getForkData2(){
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/1/comments')
+  }
+
 }

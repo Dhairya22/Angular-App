@@ -16,9 +16,8 @@ export class FormComponent implements OnInit {
 
   dataForm!: FormGroup;
 
-  static records: Array<any> = [];
+  // static records: Array<any> = [];
 
-  message = "hello";
   constructor(private ser : CommonService, private router: Router) {
     // console.log("Dataform : ",this.dataForm.value);
     // this.ser.getTheData();
@@ -26,7 +25,6 @@ export class FormComponent implements OnInit {
   }
   
   ngOnInit(){
-    this.ser.setTheData(this.message);
     this.dataForm =  new FormGroup({
       name: new FormControl('',Validators.required),
       number: new FormControl('',Validators.required),
@@ -39,9 +37,27 @@ export class FormComponent implements OnInit {
   submitData(){
     console.log("Form details : ",this.dataForm.value)
 
-    this.details = this.dataForm.value;
-    // console.log("records : ",this.records);
-    FormComponent.records = this.dataForm.value;
+    const { name, number, password, address } = this.dataForm.getRawValue();
+
+    this.details = {
+      name: "",
+      number: 0,
+      password: "",
+      address: ""
+    }
+
+    this.dataSource.push(this.details);
+    console.log("bjkbdssv : ",this.dataSource);
+    
+
+    // this.details = this.dataForm.getRawValue();
+
+    console.log("data form : ",this.dataForm.getRawValue());
+
+    console.log("keys",Object.keys(this.details));
+    
+    // console.log("records : ",this.details);
+    // FormComponent.records = this.dataForm.value;
 
     // this.router.navigate(["/records"])
     // this.ser.setTheData(this.dataForm.value);
