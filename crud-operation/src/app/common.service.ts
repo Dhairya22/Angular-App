@@ -133,4 +133,8 @@ export class CommonService {
     return this.http.get('https://jsonplaceholder.typicode.com/posts/1/comments')
   }
 
+  getUsers(){
+    return this.http.get('https://j17lt.csb.app/');
+  }
+
 }

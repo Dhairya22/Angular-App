@@ -29,6 +29,7 @@ export class ApiCompoComponent implements OnInit {
   }
 
   dataForm: FormGroup;
+  userdata;
 
   ngOnInit(): void {
     this.dataForm = new FormGroup({
@@ -38,6 +39,12 @@ export class ApiCompoComponent implements OnInit {
       Location: new FormControl('', Validators.required),
       Account_Balance: new FormControl('', Validators.required)
     });
+
+    this.data.getUsers().subscribe(el => {
+      console.log(el);
+      this.userdata = el;
+      
+    })
 
 
     this.forkJoinMethod();

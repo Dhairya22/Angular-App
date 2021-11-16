@@ -135,5 +135,13 @@ export class ResolverCompoComponent implements OnInit, customMethod {
     this.users.splice(i,1);
     this.tableData.renderRows();
   }
+
+  namee: any
+
+  ngOnChanges(namee: any){
+    namee = this.name
+    console.log(namee);
+    
+  }
 }
 
